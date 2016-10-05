@@ -1,5 +1,6 @@
 # validation-parameters-value
 
+```php
 # include validation class
 require_once('Validation.php');
 
@@ -66,3 +67,4 @@ echo '<br/>';
 # Regex validation
 echo $validate->preventAttack( '12345', $validate::VALIDATE_REGEX, null, '/^\d+$/'); # returns 12345
 echo '<br/>';
+```
