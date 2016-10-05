@@ -6,65 +6,48 @@ require_once('Validation.php');
 
 # create instance / object of validation class
 $validate = new Validation();
+```
 
-#-----------------------------------------------#
-#                                               #
-#               Filter GET value                #
-#                                               #
-#-----------------------------------------------#
-
+#  Filter GET value
+```php
 $_GET = [
     'username' => ' A string',
 ];
-echo $validate->secureGetValue('username', $validate::VALIDATE_STRING); # return 'A string'
-echo '<br/>';
 
-#-----------------------------------------------#
-#                                               #
-#               Filter POST value               #
-#                                               #
-#-----------------------------------------------#
+$validate->secureGetValue('username', $validate::VALIDATE_STRING); # return 'A string'
+```
 
+# Filter POST value
+
+```php
 $_POST = [
     'id' => ' 2',
     'page' => '',
     'email' => 'example@email.com',
 ];
 
-echo $validate->securePostValue('id', $validate::VALIDATE_INT); # returns 2
-echo '<br/>';
+$validate->securePostValue('id', $validate::VALIDATE_INT); # returns 2
 
-echo $validate->securePostValue('page', $validate::VALIDATE_INT, 'Nothing is found'); # returns Nothing is found
-echo '<br/>';
+$validate->securePostValue('page', $validate::VALIDATE_INT, 'Nothing is found'); # returns Nothing is found
 
-echo $validate->securePostValue('offset', $validate::VALIDATE_INT, 0); # returns 0
-echo '<br/>';
+$validate->securePostValue('offset', $validate::VALIDATE_INT, 0); # returns 0
 
-echo $validate->securePostValue('limit', $validate::VALIDATE_INT, 50); # returns 50
-echo '<br/>';
+$validate->securePostValue('limit', $validate::VALIDATE_INT, 50); # returns 50
 
 echo $validate->securePostValue('email', $validate::VALIDATE_EMAIL); # returns example@email.com
-echo '<br/>';
+```
 
-#-----------------------------------------------#
-#                                               #
-#                Validate values                #
-#                                               #
-#-----------------------------------------------#
+# Validate values
 
-echo $validate->preventAttack( '2015-01-01', $validate::VALIDATE_DATE); # returns 2015-01-01
-echo '<br/>';
+```php
+$validate->preventAttack( '2015-01-01', $validate::VALIDATE_DATE); # returns 2015-01-01
 
-echo $validate->preventAttack( '01/01/2015', $validate::VALIDATE_DATE); # returns 2015-01-01
-echo '<br/>';
+$validate->preventAttack( '01/01/2015', $validate::VALIDATE_DATE); # returns 2015-01-01
 
-echo $validate->preventAttack( '09.26.2016', $validate::VALIDATE_DATE); # returns 2016-09-26
-echo '<br/>';
+$validate->preventAttack( '09.26.2016', $validate::VALIDATE_DATE); # returns 2016-09-26
 
-echo $validate->preventAttack( '2015.09.15', $validate::VALIDATE_DATE, null, $validate::DATE_MMDDYYYY); # returns 09-15-2015
-echo '<br/>';
+$validate->preventAttack( '2015.09.15', $validate::VALIDATE_DATE, null, $validate::DATE_MMDDYYYY); # returns 09-15-2015
 
 # Regex validation
-echo $validate->preventAttack( '12345', $validate::VALIDATE_REGEX, null, '/^\d+$/'); # returns 12345
-echo '<br/>';
+$validate->preventAttack( '12345', $validate::VALIDATE_REGEX, null, '/^\d+$/'); # returns 12345
 ```
