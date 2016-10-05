@@ -34,7 +34,7 @@ $validate->securePostValue('offset', $validate::VALIDATE_INT, 0); # returns 0
 
 $validate->securePostValue('limit', $validate::VALIDATE_INT, 50); # returns 50
 
-echo $validate->securePostValue('email', $validate::VALIDATE_EMAIL); # returns example@email.com
+$validate->securePostValue('email', $validate::VALIDATE_EMAIL); # returns example@email.com
 ```
 
 # Validate values
